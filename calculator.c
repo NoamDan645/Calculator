@@ -26,7 +26,6 @@ typedef struct
 
 char_propeties_ty funcs_lut[128];
 
-
 /******************* math function *********************/
 static double Plus(double num1, double num2)
 {
@@ -59,6 +58,7 @@ static char *Execute(char *oper)
         a = *(double *)StackPeek(num_stack);
         StackPop(num_stack);
         b = *(double *)StackPeek(num_stack);
+
         StackPop(num_stack);
 
         b = funcs_lut[(int)*(char *)StackPeek(op_stack)].exec(a, b);
@@ -107,7 +107,6 @@ char *CloseBarket(char *exp)
     StackPop(op_stack);
     return ++exp;
 }
-
 
 /******************* init LUT *********************/
 
@@ -186,8 +185,13 @@ double Calculate(const char *expression)
         next_char = funcs_lut[(int)*next_char].parse(next_char);
         next_char = NextChar(next_char);
     }
+   
 
     result = *(double *)StackPeek(num_stack);
+    StackDestroy(num_stack);
+    StackDestroy(op_stack);
+    run =1;
+
 
     return result;
 }
