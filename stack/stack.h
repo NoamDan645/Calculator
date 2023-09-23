@@ -1,17 +1,12 @@
 /*************************************************************
-*OL124 Stack project
-*
-*
-* function of Stack Management
-*
-*
-******************************************************************/
+ * another : Noam Hadad
+ * Stack data structure API
+ *
+ *************************************************************/
 
 
-#ifndef OL124_STACK_H
-#define OL124_STACK_H
-
-
+#ifndef STACK_H
+#define STACK_H
 
 typedef struct stack stack_ty;
 
@@ -31,7 +26,7 @@ size_t StackSize(const stack_ty *stack);
 
 size_t StackCapacity(const stack_ty *stack);
 
-#endif /* OL124_STACK_H */
+#endif /* STACK_H */
 
 
 
